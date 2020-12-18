@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
 
 export default function App() {
   return (
@@ -16,8 +16,8 @@ export default function App() {
       <Text style={{ fontSize: 96 }}>Scrolling down</Text>
     </ScrollView>
     <FlatList data={[{number: 1},{number: 10}]} 
-    renderItem={({item})=><Text>{item.number}</Text>} / >
-    <View> <Button title= "press gently :)" onPress={()=> alert("hey my friend")}  /></View>
+    renderItem={({item})=> <Text>{item.number}</Text>} / >
+  <Button title= "press gently" onPress={()=> {Alert.alert("only work on mobile");  alert("hey my friend")} } />
   </View>
   );
 }
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',  // on cross axis
-    justifyContent: 'center', // on main axis
+    alignItems: 'center',  
+    justifyContent: 'center', 
   },
 });
