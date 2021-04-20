@@ -10,6 +10,12 @@ const styles = StyleSheet.create({
       justifyContent: 'center', 
     },
   });
+  
+   interface Item{
+    number:number 
+   }
+   let data:Item[]= [{number: 1},{number: 10}];
+   
 
   export default function Home(){
     return (
@@ -24,9 +30,11 @@ const styles = StyleSheet.create({
           
             <Text style={{ fontSize: 96 }}>Scrolling down</Text>
           </ScrollView>
-          <FlatList data={[{number: 1},{number: 10}]} 
+          <FlatList  keyExtractor={(item)=>item.number.toString()} data={data} 
           renderItem={({item})=> <Text>{item.number}</Text>} / >
-        <Button title= "press gently" onPress={()=> {Alert.alert("only work on mobile");  alert("hey my friend")} } />
+          <Button title= "press gently"
+          onPress={()=> {Alert.alert("only work on mobile");  
+          alert("hey my friend")} } />
         </View>
         );
   }
